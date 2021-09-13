@@ -1,12 +1,13 @@
+// main loading function
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
-  fetch(url)
-    .then((response) => response.json())
+  fetch(url) // call API by fetch.
+    .then((response) => response.json()) // Convert api data.
     .then((data) => showProducts(data));
 };
 loadProducts();
 
-// show all product in UI 
+// show all product in User Interface. 
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
@@ -21,14 +22,18 @@ const showProducts = (products) => {
       <p>Category: ${product.category}</p>
       <p class="rating">Rating: <span style="color: #EE310B;">${product.rating.rate}</span> <span class="rating-count">(${product.rating.count})</span></p>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now my-button">Add To Cart</button>
-      <button id="details-btn" class="info-button">Details</button></div>
+      <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now my-button">Add To Cart</button>
+      <button id="details-btn" class="info-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modal(${product.id})">Details</button>
+      </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
+// Variable for count products.
 let count = 0;
-const addToCart = (id, price) => {
+
+// Add to card item function.
+const addToCart = (price) => {
   count = count + 1;
   updatePrice("price", price);
   updateTaxAndCharge();
@@ -36,20 +41,21 @@ const addToCart = (id, price) => {
   document.getElementById("total-Products").innerText = count;
 };
 
-const getInputValue = (id) => {
-  const element = document.getElementById(id).innerText;
-  const converted = parseFloat(element);
-  // console.log(element);
-  return converted;
-};
-
 // main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  const convertPrice = parseFloat(value);
+  const convertPrice = parseFloat(value); // convert to float
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = (total).toFixed(2);
 };
+// get price value function.
+const getInputValue = (id) => {
+  const element = document.getElementById(id).innerText;
+  const converted = parseFloat(element);
+  return converted; // return current price
+};
+
+
 
 // set innerText function
 const setInnerText = (id, value) => {
@@ -59,17 +65,20 @@ const setInnerText = (id, value) => {
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price");
-  if (priceConverted > 200) {
-    setInnerText("delivery-charge", 30);
-    setInnerText("total-tax", priceConverted * 0.2);
+  if (priceConverted <= 200) {
+    setInnerText("delivery-charge", 20);
   }
-  if (priceConverted > 400) {
+  else if (priceConverted > 500) {
+    setInnerText("delivery-charge", 60);
+    setInnerText("total-tax", priceConverted * 0.4);
+  }
+  else if (priceConverted > 400) {
     setInnerText("delivery-charge", 50);
     setInnerText("total-tax", priceConverted * 0.3);
   }
-  if (priceConverted > 500) {
-    setInnerText("delivery-charge", 60);
-    setInnerText("total-tax", priceConverted * 0.4);
+  else if (priceConverted > 200) {
+    setInnerText("delivery-charge", 30);
+    setInnerText("total-tax", priceConverted * 0.2);
   }
 };
 
@@ -80,3 +89,15 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+
+const modal = (id) => {
+  fetch(`https://fakestoreapi.com/products/${id}`)
+            .then(res=>res.json())
+            .then(json=> setModal(json))
+}
+
+const setModal = (data) => {
+    document.getElementById("exampleModalLabel").innerText = `${data.title}`
+    document.getElementById("description").innerText = `${data.description}`
+}

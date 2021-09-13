@@ -42,7 +42,7 @@ body {
 .my-button:hover {
   color: white;
   background-color: #ff036c;
-  box-shadow: 1px 1px;
+  box-shadow: 1px 1px 1px gray;
 }
 .info-button {
   background-color: #0DCAF0;
@@ -56,7 +56,7 @@ body {
 .info-button:hover {
   color: black;
   background-color: #1bffd9;
-  box-shadow: 0.5px .5px;
+  box-shadow: 1px 1px 1px gray;
 }
 .cart {
   width: 350px;
@@ -76,6 +76,7 @@ body {
 }
 .rating-count {
   font-size: 18px;
+  color: rgb(107, 106, 106);
 }
 @media only screen and (max-width: 768px) {
   #all-products {
