@@ -99,5 +99,5 @@ const modal = (id) => {
 const setModal = (data) => {
     document.getElementById("exampleModalLabel").innerText = `${data.title}`
     document.getElementById("description").innerText = `${data.description}`
-    document.getElementById("price").innerText = `price: $ ${data.price}`
+    document.getElementById("price-info").innerText = `price: $ ${data.price}`
 }
