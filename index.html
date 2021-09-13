@@ -5,11 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FakeStore</title>
+  <title>Projapoti Shopping Complex</title>
   <link rel="stylesheet" href="./css/style.css" />
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
   <!-- google Montserrat  font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,17 +17,13 @@
 </head>
 
 <body>
-  <header></header>
-  <main class="main">
-    <div class="search-field">
-      <div class="search-box">
-        <input id="input-field" class="search-field" type="text" />
-        <button type="button" class="btn btn-primary search-button" data-toggle="button" aria-pressed="false"
-          autocomplete="off" id="search-btn" onclick="loadProducts()">
-          Search
-        </button>
-      </div>
+  <header class="my-5">
+    <div class="input-group w-25 mx-auto">
+      <input type="text" class="form-control" placeholder="Search Product Here">
+      <button class="btn btn-outline-success my-button" type="button" id="button-addon2">Search</button>
     </div>
+  </header>
+  <section class="mt-4 main">
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div id="all-products" class="">
@@ -79,12 +74,12 @@
             </tbody>
           </table>
           <div class="parces text-center">
-            <button class="btn btn-primary text-center">Buy Now</button>
+            <a class="my-button text-center">Buy Now</a>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </section>
   <footer></footer>
 
   <!-- add javascript  file  -->
