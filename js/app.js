@@ -55,8 +55,6 @@ const getInputValue = (id) => {
   return converted; // return current price
 };
 
-
-
 // set innerText function
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = (value).toFixed(2);
@@ -90,14 +88,16 @@ const updateTotal = () => {
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
-
+// Details modal create function
 const modal = (id) => {
   fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res=>res.json())
             .then(json=> setModal(json))
 }
 
+// Set modal data function
 const setModal = (data) => {
     document.getElementById("exampleModalLabel").innerText = `${data.title}`
     document.getElementById("description").innerText = `${data.description}`
+    document.getElementById("price").innerText = `price: $ ${data.price}`
 }

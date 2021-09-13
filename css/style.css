@@ -1,26 +1,30 @@
+/* Css for body */
 body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
+/* Css design all products section */
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 1px solid black; */
   text-align: center;
   width: 100%;
   margin: auto;
   align-items: center;
   justify-content: center;
 }
+
+/* Css for design single products */
 .single-product {
-  padding: 10px;
+  padding: 7px;
   transition: 0.6s;
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
   border-radius: 10px;
   border: 1px solid cyan;
+  background-color: rgb(135, 253, 214);
 }
 .product-title {
   color: #2A3648;
@@ -30,6 +34,16 @@ body {
   width: 150px;
   height: 150px;
 }
+.rating {
+  font-size: 22px;
+  color: #2A3648;
+}
+.rating-count {
+  font-size: 18px;
+  color: rgb(107, 106, 106);
+}
+
+/* Design Custom Button */
 .my-button {
   background-color: rgb(218, 19, 95);
   border-radius: 5px;
@@ -55,29 +69,25 @@ body {
 }
 .info-button:hover {
   color: black;
-  background-color: #1bffd9;
+  background-color: #01ffd5;
   box-shadow: 1px 1px 1px gray;
 }
+
+/* Design Cart Table */
 .cart {
   width: 350px;
-  /* border: 1px solid green; */
   padding: 10px;
   box-shadow: 10px 10px 20px gray;
   border-radius: 5px;
   margin-right: 30px;
   position: fixed;
+  color: #2A3648;
 }
 .cart-main {
   padding-right: 30px;
 }
-.rating {
-  font-size: 22px;
-  color: #2A3648;
-}
-.rating-count {
-  font-size: 18px;
-  color: rgb(107, 106, 106);
-}
+
+/* Responsive For Tablet */
 @media only screen and (max-width: 768px) {
   #all-products {
     display: grid;
@@ -96,6 +106,8 @@ body {
     padding-right: 10px;
   }
 }
+
+/* Responsive for mobile devices */
 @media only screen and (max-width: 468px) {
   #all-products {
     display: grid;
