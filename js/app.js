@@ -43,13 +43,13 @@ const addToCart = (price) => {
 
 // main price update function
 const updatePrice = (id, value) => {
-  const convertedOldPrice = getInputValue(id);
+  const convertedOldPrice = getPriceValue(id);
   const convertPrice = parseFloat(value); // convert to float
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = (total).toFixed(2);
 };
 // get price value function.
-const getInputValue = (id) => {
+const getPriceValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
   return converted; // return current price
@@ -62,7 +62,7 @@ const setInnerText = (id, value) => {
 
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
-  const priceConverted = getInputValue("price");
+  const priceConverted = getPriceValue("price");
   if (priceConverted <= 200) {
     setInnerText("delivery-charge", 20);
   }
@@ -80,12 +80,12 @@ const updateTaxAndCharge = () => {
   }
 };
 
-//grandTotal update function
+//finalTotal update function
 const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal.toFixed(2);
+  const finalTotal =
+    getPriceValue("price") + getPriceValue("delivery-charge") +
+    getPriceValue("total-tax");
+  document.getElementById("total").innerText = finalTotal.toFixed(2);
 };
 
 // Details modal create function
